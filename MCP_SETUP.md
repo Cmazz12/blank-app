@@ -14,13 +14,44 @@ Model Context Protocol (MCP) is a standardized protocol that allows AI assistant
 
 ## Setup Instructions
 
-### 1. Create a HubSpot Private App
+### 1. Get HubSpot Access Token
 
-1. Go to your HubSpot account: https://app.hubspot.com/settings/integrations/private-apps
-2. Click "Create a private app"
-3. Give it a name (e.g., "MCP Integration")
-4. Select the scopes you need (e.g., CRM read/write, contacts, companies, deals)
-5. Create the app and copy the access token
+You have two options for authentication:
+
+#### Option A: Private Apps (Recommended)
+
+**Finding Private Apps:**
+1. Click the ⚙️ **Settings** icon in HubSpot (top right)
+2. In the left sidebar, go to **Integrations** → **Private Apps**
+3. Or use direct URL: `https://app.hubspot.com/private-apps/YOUR_ACCOUNT_ID`
+
+**Creating a Private App:**
+1. Click "Create a private app"
+2. Give it a name (e.g., "MCP Integration")
+3. Select the scopes you need:
+   - **CRM**: Read/Write for contacts, companies, deals
+   - **Standard**: As needed for your use case
+4. Create the app and copy the access token
+
+**Requirements:**
+- Need **Super Admin** permissions
+- Available on all HubSpot tiers (Free, Starter, Professional, Enterprise)
+
+**Can't find Private Apps?**
+- Check your user role: Settings → Users & Teams
+- Must be a Super Admin to see this option
+- If still not visible, contact your HubSpot admin or use Option B below
+
+#### Option B: OAuth Access Token (Alternative)
+
+If Private Apps aren't available:
+
+1. Go to Settings → Integrations → **Connected Apps**
+2. Look for existing OAuth integrations
+3. Or create a developer app at: https://developers.hubspot.com/
+4. Use the OAuth flow to generate an access token
+
+**Note:** OAuth tokens expire and require refresh token handling, so Private Apps are preferred for MCP integration.
 
 ### 2. Configure Environment Variables
 
@@ -76,6 +107,27 @@ This automatically downloads and runs the latest HubSpot MCP server.
 
 ## Troubleshooting
 
+### Can't Find Private Apps in HubSpot?
+
+**Check your navigation:**
+1. Settings (⚙️) → Integrations → Private Apps
+2. Look for "Private Apps" in the left sidebar under Integrations section
+3. If you see "Connected Apps" and "Legacy Apps" but not "Private Apps", try:
+   - Checking your permissions (must be Super Admin)
+   - Using the direct URL: `https://app.hubspot.com/private-apps/YOUR_ACCOUNT_ID`
+   - Contacting your HubSpot account admin
+
+**Permission Check:**
+- Go to Settings → Users & Teams
+- Find your user account
+- Verify you have "Super Admin" role
+- Regular users cannot create Private Apps
+
+**Alternative if Private Apps unavailable:**
+- Use OAuth authentication (Option B above)
+- Ask your HubSpot admin to create a Private App for you
+- Use a developer account at https://developers.hubspot.com/
+
 ### Error: "Command not found: npx"
 - Install Node.js from https://nodejs.org/
 
@@ -83,10 +135,12 @@ This automatically downloads and runs the latest HubSpot MCP server.
 - Verify your token in `.env` matches the one from HubSpot
 - Check that your Private App has the necessary scopes
 - Ensure the token hasn't expired
+- For OAuth tokens, check if token needs refresh
 
 ### Error: "Permission denied"
 - Review your Private App scopes in HubSpot
 - Add the required scopes and regenerate the token
+- Ensure you have CRM access permissions in your HubSpot account
 
 ## Available MCP Tools
 
