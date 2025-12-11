@@ -1,19 +1,27 @@
-# 🎈 Blank app template
+# blank-app
 
-A simple Streamlit app template for you to modify!
+A small starter Streamlit app (based on the Streamlit blank-app template).
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+Status
+- CI: (badge placeholder)
+- License: Apache-2.0
 
-### How to run it on your own machine
+Overview
+This repository contains a minimal Streamlit app and a basic CI pipeline to get started quickly.
 
-1. Install the requirements
+Prerequisites
+- Python 3.10 or 3.11
+- git
 
-   ```
-   $ pip install -r requirements.txt
-   ```
+Run locally (venv + pip)
+1. python -m venv .venv
+2. source .venv/bin/activate    # Linux / macOS
+   .venv\Scripts\activate       # Windows (PowerShell)
+3. pip install -r requirements.txt
+4. streamlit run app.py
 
-2. Run the app
+Run tests
+- pytest
 
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+License
+This project is licensed under the Apache 2.0 License.
