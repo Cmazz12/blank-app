@@ -1,19 +1,38 @@
-# 🎈 Blank app template
+# 🎈 Blank App Starter
 
-A simple Streamlit app template for you to modify!
+[![CI](https://github.com/Cmazz12/blank-app/workflows/CI/badge.svg)](https://github.com/Cmazz12/blank-app/actions)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+A simple Streamlit starter application with testing and CI/CD setup.
 
-### How to run it on your own machine
+## Description
 
-1. Install the requirements
+This is a minimal Streamlit application template that includes unit tests and continuous integration. Perfect for starting new Streamlit projects with best practices built in.
 
+## How to Run Locally
+
+1. Create and activate a virtual environment:
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate
    ```
-   $ pip install -r requirements.txt
+
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
    ```
 
-2. Run the app
+3. Run the application:
+   ```bash
+   streamlit run app.py
+   ```
 
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+## How to Run Tests
+
+```bash
+pytest
+```
+
+## License
+
+Apache License 2.0 - See [LICENSE](LICENSE) file for details.
